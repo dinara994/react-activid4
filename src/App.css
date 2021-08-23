@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-top: 200px;
 }
 
 .App-logo {
@@ -36,3 +37,33 @@
     transform: rotate(360deg);
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  max-width: 1170px;
+  padding: 0 15px;
+  width: 100%;
+  margin: 0 auto;
+}
+.app{
+  padding: 5px 10px;
+  border: 1px solid #ab83ea;
+  background: #cfc2fa;
+  margin: 15px;
+}
+.input {
+  padding: 5px 0;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #f5e80b;
+}
+.name {
+  border: 1px solid #f6e728;
+  padding: 20px 0;
+  margin: 50px 320px 0;
+  background: #dad3ef;
+}
+
