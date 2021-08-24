@@ -26,10 +26,10 @@ useEffect(() =>{
         .then(({data}) => setPeople(data))
 }, [userId])
 return(
-    <div className='container'>
+    <div className='container' key={people.id}>
         <div className='box'>
             <button onChange={handalUser} onClick={minus} className='minus app'> - </button>
-            <input type="text" value={userId} className='input'/>
+            <input type="text" value={userId} className='input' />
             <button onChange={handalUser} onClick={plus} className='plus app'> + </button>
             <div className='name'>{people.name}</div>
         </div>
