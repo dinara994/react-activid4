@@ -1,55 +1,43 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-// Создайте компонент, который выводит имена и почты всех польхоователей
-// https://jsonplaceholder.typicode.com/
-//- Создайте компонент, который содержит input и две кнопки
-// Вывести имя пользователя с сервиса swapi.dev, id которого напечатан в input
-// так же есть возможность переключать пользователя нажатием на кнопки по убыванию и возрастанию соответственно
-//- Воспользуйтесь api https://docs.thecatapi.com/
-// Отобразить выпадающий список с породами котов. вывести информацию о породе включая фото
-//- Воспользуйтесь api https://pokeapi.co/ и выведите фото всех покемонов включая их имена
-//- Каждое задание должно быть в виде отдельного компонента и выведено в App одновременно. Результат загрузить на один из облачных сервисов на выбор
-const Inform = () => {
-    const [input, setInput] = useState([]) //breeds
-    const [cat, setCat] = useState([])
-    const [information, setInformation] = useState(false)
-    const [image, setImage] = useState({})
 
-    useEffect(() => {
-        axios('https://https://api.thecatapi.com/v1/images/search?breed_id=beng')
-            .then(({data}) => setImage(data))
-    },[])
-    useEffect(() =>{
-        axios('https://api.thecatapi.com/v1/breeds')
-            .then(({data}) => setCat(data))
-    }, [])
+const Inform = () => {
+    const [cats, setCats] = useState([]) //breeds
+    const [cat, setCat] = useState({})
+
     const catInfo = (e) => {
-        setInformation(e.target.value)
+        //1
+       // const selected = cats.filter(item => item.id === e.target.value)
+       //  setCat(selected[0])
+        //2
+        const selected = cats.find(item => item.id === e.target.value)
+        setCat(selected)
     }
-    // const imageCat = (e) => {
-    //     setImage(e.target.url)
-    // }
+    useEffect(() => {
+        axios('https://api.thecatapi.com/v1/breeds')
+            .then(({data}) => setCats(data))
+    }, [])
     return (
-        <div >
+        <div>
             <select onChange={catInfo}>
+                <option selected disabled>Choose...</option>
                 {
-                    cat.map((el, idx) => {
-                        return  <option  value={el.name}>{el.name}</option>
-                    })
+                    cats.map(el=>
+                       <option  value={el.id} key={el.id}>{el.name}</option>
+                    )
                 }
             </select>
-            {/*<div onChange={imageCat}>{image}</div>*/}
-            <div>
-                {
-                    image.map(el => {
-                        return <img src="" alt="" value={el.images}/>
-                    })
-                }
-            </div>
+            {
+                cat.id &&
+                <div>
+                    <img src={cat.image.url} alt="" width='300px'/>
+                    <div>Name: {cat.name}</div>
+                    <div>Description: {cat.description}</div>
+                </div>
+            }
         </div>
-
-    )
-}
+    );
+};
 
 export default Inform
 

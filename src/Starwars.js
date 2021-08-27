@@ -4,7 +4,7 @@ import axios from "axios";
 const Starwars = () => {
 const [userId, setUserId] = useState(1)
     const [people, setPeople] = useState({})
-const handalUser = (e) => {
+const handleUser = (e) => {
     setUserId(e.target.value)
 }
     const minus = () => {
@@ -28,25 +28,14 @@ useEffect(() =>{
 return(
     <div className='container' key={people.id}>
         <div className='box'>
-            <button onChange={handalUser} onClick={minus} className='minus app'> - </button>
+            <button onChange={handleUser} onClick={minus} className='minus app'> - </button>
             <input type="text" value={userId} className='input' />
-            <button onChange={handalUser} onClick={plus} className='plus app'> + </button>
+            <button onChange={handleUser} onClick={plus} className='plus app'> + </button>
             <div className='name'>{people.name}</div>
         </div>
     </div>
 )
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 export default Starwars

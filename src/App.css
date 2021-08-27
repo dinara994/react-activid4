@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  margin-top: 200px;
+  margin-top: 20px;
 }
 
 .App-logo {
@@ -65,5 +65,8 @@
   padding: 20px 0;
   margin: 50px 320px 0;
   background: #dad3ef;
+}
+.nav-link.active {
+  color: dodgerblue;
 }
 
